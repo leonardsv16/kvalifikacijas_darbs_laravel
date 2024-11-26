@@ -3,25 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Model;
 
-class User extends Authenticatable
+class Project extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'email',
-        'role',
+        'title',
+        'description',
     ];
 
     public function tasks()
     {
         return $this->hasMany(Task::class);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
     }
 }
