@@ -38,7 +38,7 @@
         </ul>
     </nav>
 
-    <!-- Contact Us Section -->
+
     <section class="panel b-green" id="4">
         <article class="panel__wrapper">
             <div class="panel__content">

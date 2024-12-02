@@ -60,7 +60,7 @@
                                         <div class="task-container">
                                             <h5>Not started</h5>
                                             <div class="task-box">
-                                                <!-- Tasks that are not started can go here -->
+
                                             </div>
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@
                                         <div class="task-container">
                                             <h5>Started</h5>
                                             <div class="task-box">
-                                                <!-- Tasks that are started can go here -->
+
                                             </div>
                                         </div>
                                     </div>
@@ -78,7 +78,7 @@
                                         <div class="task-container">
                                             <h5>Finished</h5>
                                             <div class="task-box">
-                                                <!-- Tasks that are finished can go here -->
+
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@
                                         <div class="task-container">
                                             <h5>Checked</h5>
                                             <div class="task-box">
-                                                <!-- Tasks that are checked can go here -->
+
                                             </div>
                                         </div>
                                     </div>

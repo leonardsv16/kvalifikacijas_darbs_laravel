@@ -176,7 +176,7 @@
         </article>
     </section>
 
-    <!-- Footer (optional) -->
+
     <div class="footer">
         <p>Copyright &copy; 2020 Your Company | Design: TemplateMo</p>
     </div>

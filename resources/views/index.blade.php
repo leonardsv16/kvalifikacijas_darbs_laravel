@@ -59,7 +59,7 @@
         </article>
     </section>
 
-    <!-- Section #2 and others removed for simplicity, leaving only the home page content -->
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
