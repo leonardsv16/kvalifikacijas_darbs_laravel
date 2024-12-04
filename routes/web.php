@@ -4,13 +4,19 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 
+use App\Http\Controllers\TasksController;
+
+Route::get('/tasks', [TasksController::class, 'index'])->name('tasks.index');
+Route::post('/tasks', [TasksController::class, 'store'])->name('tasks.store');
+
+
 Route::get('/home', function () {
     return view('index');
 });
 
-Route::get('/tasks', function () {
-    return view('page2');
-});
+// Route::get('/tasks11', function () {
+//     return view('page2');
+// });
 
 Route::get('/projects', function () {
     return view('page3');

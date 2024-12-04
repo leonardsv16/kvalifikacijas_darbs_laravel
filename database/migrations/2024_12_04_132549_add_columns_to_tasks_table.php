@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations.??
      */
     public function up(): void
     {
@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('status');
             $table->timestamp('start_time')->nullable();
             $table->timestamp('end_time')->nullable();
-            $table->unsignedBigInteger('project_id');
-            $table->foreign('project_id')->references('id')->on('projects')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('project_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
 
