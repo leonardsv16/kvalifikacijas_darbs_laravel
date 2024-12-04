@@ -12,6 +12,7 @@ class TasksController extends Controller
 
     public function index()
 {
+
     $tasks = [
         'not_started' => Task::where('status', 'Not started')->get(),
         'started' => Task::where('status', 'Started')->get(),
@@ -19,11 +20,14 @@ class TasksController extends Controller
         'checked' => Task::where('status', 'Checked')->get(),
     ];
 
+
     $users = User::all();
     $projects = Project::all();
 
+
     return view('tasks', compact('tasks', 'users', 'projects'));
 }
+
 
     public function store(Request $request)
 {

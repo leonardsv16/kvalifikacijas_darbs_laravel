@@ -8,11 +8,9 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/templatemo-style.css') }}" />
-
     <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
 
     <style>
@@ -23,6 +21,11 @@
         #add-task-form {
             display: none;
             margin-top: 20px;
+        }
+
+        .task-box button {
+            width: 100%;
+            margin: 5px 0;
         }
     </style>
 </head>
@@ -61,7 +64,7 @@
                                     <button id="show-task-form" class="btn btn-primary">Add Task</button>
                                 </div>
 
-
+                                <!-- Add Task Form -->
                                 <div id="add-task-form">
                                     <form action="{{ route('tasks.store') }}" method="POST">
                                         @csrf
@@ -107,7 +110,7 @@
                                     </form>
                                 </div>
 
-
+                                <!-- Task List -->
                                 <div class="row mt-4">
                                     @foreach (['not_started', 'started', 'finished', 'checked'] as $status)
                                         <div class="col-md-3">
@@ -115,7 +118,18 @@
                                                 <h5>{{ ucfirst(str_replace('_', ' ', $status)) }}</h5>
                                                 <div class="task-box">
                                                     @foreach ($tasks[$status] as $task)
-                                                        <p>{{ $task->title }}</p>
+                                                        <!-- Task Button -->
+                                                        <button
+                                                            class="btn btn-link text-white"
+                                                            data-toggle="modal"
+                                                            data-target="#taskModal"
+                                                            data-id="{{ $task->id }}"
+                                                            data-title="{{ $task->title }}"
+                                                            data-status="{{ $task->status }}"
+                                                            data-start_time="{{ $task->start_time }}"
+                                                            data-end_time="{{ $task->end_time }}">
+                                                            {{ $task->title }}
+                                                        </button>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -130,11 +144,63 @@
         </article>
     </section>
 
+    <!-- Modal -->
+    <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="taskModalLabel">View Task</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="taskForm">
+                        <input type="hidden" id="task_id">
+                        <div class="form-group">
+                            <label for="task_title">Title</label>
+                            <input type="text" class="form-control" id="task_title" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="task_status">Status</label>
+                            <input type="text" class="form-control" id="task_status" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="task_start_time">Start Time</label>
+                            <input type="text" class="form-control" id="task_start_time" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="task_end_time">End Time</label>
+                            <input type="text" class="form-control" id="task_end_time" readonly>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
         document.getElementById("show-task-form").addEventListener("click", function () {
             const form = document.getElementById("add-task-form");
             form.style.display = form.style.display === "none" || form.style.display === "" ? "block" : "none";
+        });
+
+
+        $('#taskModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            var taskId = button.data('id');
+            var taskTitle = button.data('title');
+            var taskStatus = button.data('status');
+            var taskStartTime = button.data('start_time');
+            var taskEndTime = button.data('end_time');
+
+            var modal = $(this);
+            modal.find('#task_id').val(taskId);
+            modal.find('#task_title').val(taskTitle);
+            modal.find('#task_status').val(taskStatus);
+            modal.find('#task_start_time').val(taskStartTime);
+            modal.find('#task_end_time').val(taskEndTime);
         });
     </script>
 
