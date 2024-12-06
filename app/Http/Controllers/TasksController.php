@@ -55,23 +55,23 @@ class TasksController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $validated = $request->validate([
-            'name' => 'string|max:255',
-            'status' => 'nullable|string',
-            'deadline' => 'nullable|date',
-        ]);
+        $task = Task::findOrFail($request->task_id);
+        $task->title = $request->title;
+        $task->status = $request->status;
+        $task->start_time = $request->start_time;
+        $task->end_time = $request->end_time;
+        $task->save();
 
-        $task = Task::findOrFail($id);
-        $task->update($validated);
-        return redirect()->route('tasks.index')->with('success', 'Uzdevums atjaunināts!');
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully');
     }
+
 
 
     public function destroy($id)
     {
         Task::destroy($id);
-        return redirect()->route('tasks.index')->with('success', 'Uzdevums dzēsts!');
+        return redirect()->route('tasks.index')->with('success', 'Task deletef');
     }
 }

@@ -159,26 +159,37 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="taskForm">
-                        <input type="hidden" id="task_id">
-                        <div class="form-group">
-                            <label for="task_title">Title</label>
-                            <input type="text" class="form-control" id="task_title" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="task_status">Status</label>
-                            <input type="text" class="form-control" id="task_status" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="task_start_time">Start Time</label>
-                            <input type="text" class="form-control" id="task_start_time" readonly>
-                        </div>
-                        <div class="form-group">
-                            <label for="task_end_time">End Time</label>
-                            <input type="text" class="form-control" id="task_end_time" readonly>
-                        </div>
-                    </form>
-                </div>
+    <form id="taskForm" action="{{ route('tasks.update') }}" method="POST">
+        @csrf
+        @method('PUT')
+        <input type="hidden" id="task_id" name="task_id">
+
+        <div class="form-group">
+            <label for="task_title">Title</label>
+            <input type="text" class="form-control" id="task_title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="task_status">Status</label>
+            <select class="form-control" id="task_status" name="status" required>
+                <option value="Not started">Not started</option>
+                <option value="Started">Started</option>
+                <option value="Finished">Finished</option>
+                <option value="Checked">Checked</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="task_start_time">Start Time</label>
+            <input type="datetime-local" class="form-control" id="task_start_time" name="start_time" required>
+        </div>
+        <div class="form-group">
+            <label for="task_end_time">End Time</label>
+            <input type="datetime-local" class="form-control" id="task_end_time" name="end_time" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">Save Changes</button>
+    </form>
+</div>
+
             </div>
         </div>
     </div>
