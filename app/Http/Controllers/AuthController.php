@@ -15,6 +15,8 @@ class AuthController extends Controller
         if (Auth::attempt($validated)) {
             return redirect()->route('home')->with('success', 'Logged in successfully!');
         }
-
+        return back()->withErrors([
+            'email' => 'Invalid email or password.',
+        ])->withInput();
     }
 }

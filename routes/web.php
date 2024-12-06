@@ -5,14 +5,18 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\TasksController;
-
+use App\Http\Controllers\AuthController;
 Route::get('/tasks', [TasksController::class, 'index'])->name('tasks.index');
 Route::post('/tasks', [TasksController::class, 'store'])->name('tasks.store');
 
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+// Route::get('/home', function () {
+//     return view('index');
+// });
 
 Route::get('/home', function () {
-    return view('index');
-});
+    return view(view: 'index');
+})->middleware('auth')->name('home');
 
 // Route::get('/tasks11', function () {
 //     return view('page2');

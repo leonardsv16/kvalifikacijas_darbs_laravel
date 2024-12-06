@@ -64,7 +64,7 @@
                                     <button id="show-task-form" class="btn btn-primary">Add Task</button>
                                 </div>
 
-                                <!-- Add Task Form -->
+
                                 <div id="add-task-form">
                                     <form action="{{ route('tasks.store') }}" method="POST">
                                         @csrf
@@ -110,7 +110,7 @@
                                     </form>
                                 </div>
 
-                                <!-- Task List -->
+
                                 <div class="row mt-4">
                                     @foreach (['not_started', 'started', 'finished', 'checked'] as $status)
                                         <div class="col-md-3">
@@ -118,7 +118,7 @@
                                                 <h5>{{ ucfirst(str_replace('_', ' ', $status)) }}</h5>
                                                 <div class="task-box">
                                                     @foreach ($tasks[$status] as $task)
-                                                        <!-- Task Button -->
+
                                                         <button
                                                             class="btn btn-link text-white"
                                                             data-toggle="modal"
@@ -144,7 +144,7 @@
         </article>
     </section>
 
-    <!-- Modal -->
+
     <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
