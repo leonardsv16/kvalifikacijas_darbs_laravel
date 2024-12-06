@@ -14,7 +14,6 @@
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
 
     <style>
-
         body {
             background-color: #f4f7fc;
             height: 100vh;
@@ -25,7 +24,7 @@
         }
 
         .login-container {
-            margin:auto;
+            margin: auto;
             background: white;
             padding: 40px;
             border-radius: 10px;
@@ -65,7 +64,6 @@
             margin-top: 20px;
         }
 
-
         .nav__link {
             color: white;
         }
@@ -73,7 +71,6 @@
         .nav__link:hover {
             color: #f4f7fc;
         }
-
 
         .text-center a {
             font-weight: bold;
@@ -88,7 +85,6 @@
 
 <body>
 
-
     <nav class="nav">
         <div class="burger">
             <div class="burger__patty"></div>
@@ -98,18 +94,21 @@
             <li class="nav__item">
                 <a href="/home" class="nav__link c-blue"><img src="img/home-icon.png" alt="" /></a>
             </li>
-            <li class="nav__item">
-                <a href="/tasks" class="nav__link c-yellow scrolly"><img src="img/about-icon.png" alt="" /></a>
-            </li>
-            <li class="nav__item">
-                <a href="/projects" class="nav__link c-red"><img src="img/projects-icon.png" alt="" /></a>
-            </li>
+
+            @auth
+                <li class="nav__item">
+                    <a href="/tasks" class="nav__link c-yellow scrolly"><img src="img/about-icon.png" alt="" /></a>
+                </li>
+                <li class="nav__item">
+                    <a href="/projects" class="nav__link c-red"><img src="img/projects-icon.png" alt="" /></a>
+                </li>
+            @endauth
+
             <li class="nav__item">
                 <a href="/contacts" class="nav__link c-green"><img src="img/contact-icon.png" alt="" /></a>
             </li>
         </ul>
     </nav>
-
 
     <section class="panel b-blue" id="1">
         <article class="panel__wrapper">
@@ -117,56 +116,61 @@
                 <div class="container">
                     <div class="row">
                         <div class="login-container">
-                            <h2>Login</h2>
 
-                                <!-- messages- -->
+                            @auth
+                                <h2>Welcome, {{ auth()->user()->name }}</h2>
+
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Logout</button>
+                                </form>
+
+                            @else
+                                <h2>Login</h2>
+
                                 @if(session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
+                                    <div class="alert alert-success">
+                                        {{ session('success') }}
+                                    </div>
+                                @endif
+
+                                @if($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
+                                <form action="{{ route('login') }}" method="POST">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input type="password" id="password" name="password" class="form-control" required placeholder="Enter your password" />
+                                    </div>
+
+                                    <button type="submit" class="btn btn-primary">Login</button>
+                                </form>
+
+                                <div class="text-center">
+                                    <p>Don't have an account? <a href="/register">Register here</a></p>
+                                    <p><a href="/password/reset">Forgot your password?</a></p>
                                 </div>
-                            @endif
+                            @endauth
 
-                            @if($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-
-
-                            <form action="/login" method="POST">
-                                @csrf
-
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" class="form-control" required placeholder="Enter your email" />
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input type="password" id="password" name="password" class="form-control" required placeholder="Enter your password" />
-                                </div>
-
-
-                                <button type="submit" class="btn btn-primary">Login</button>
-                            </form>
-
-
-                            <div class="text-center">
-                                <p>Don't have an account? <a href="/register">Register here</a></p>
-                                <p><a href="/password/reset">Forgot your password?</a></p>
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </article>
     </section>
-
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script>
