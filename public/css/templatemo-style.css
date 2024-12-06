@@ -1,10 +1,4 @@
-/* 
 
-Stacked Template
-
-https://templatemo.com/tm-505-stacked
-
-*/
 
 body {
 	font-family: 'Roboto', sans-serif;
@@ -203,7 +197,7 @@ ul {
 }
 
 .panel {
-  margin: 0;	
+  margin: 0;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -325,9 +319,9 @@ ul {
 	display: inline-block;
 }
 
-.home-content .left-text {     
-	float: left;     
-	width: 60%; 
+.home-content .left-text {
+	float: left;
+	width: 60%;
 }
 
 .home-content .left-text h4 {
@@ -629,9 +623,9 @@ ul {
   .home-content h1 em {
     font-size: 36px;
   }
-  .home-content .left-text {     
-    float: none;     
-    width: auto; 
+  .home-content .left-text {
+    float: none;
+    width: auto;
   }
   .home-content .right-image {
     text-align: center;
@@ -766,7 +760,6 @@ body.lb-disable-scrolling {
 
 .lb-outerContainer {
   position: relative;
-  *zoom: 1;
   width: 250px;
   height: 250px;
   margin: 0 auto;

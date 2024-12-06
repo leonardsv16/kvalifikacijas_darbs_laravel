@@ -83,11 +83,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="footer">
-                                <p>Copyright &copy; 2020 Your Company | Design: TemplateMo</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
