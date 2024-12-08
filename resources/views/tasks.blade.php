@@ -68,7 +68,6 @@
                                     <button id="show-task-form" class="btn btn-primary">Add Task</button>
                                 </div>
 
-
                                 <div id="add-task-form">
                                     <form action="{{ route('tasks.store') }}" method="POST">
                                         @csrf
@@ -86,10 +85,10 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="datetime-local" name="start_time" class="form-control" placeholder="Start Time" required />
+                                                <input type="datetime-local" name="start_time" class="form-control" required />
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="datetime-local" name="end_time" class="form-control" placeholder="End Time" required />
+                                                <input type="datetime-local" name="end_time" class="form-control" required />
                                             </div>
                                             <div class="col-md-2">
                                                 <select name="user_id" class="form-control" required>
@@ -114,7 +113,6 @@
                                     </form>
                                 </div>
 
-
                                 <div class="row mt-4">
                                     @foreach (['not_started', 'started', 'finished', 'checked'] as $status)
                                         <div class="col-md-3">
@@ -122,18 +120,28 @@
                                                 <h5>{{ ucfirst(str_replace('_', ' ', $status)) }}</h5>
                                                 <div class="task-box">
                                                     @foreach ($tasks[$status] as $task)
-
-                                                        <button
-                                                            class="btn btn-link text-white"
-                                                            data-toggle="modal"
-                                                            data-target="#taskModal"
-                                                            data-id="{{ $task->id }}"
-                                                            data-title="{{ $task->title }}"
-                                                            data-status="{{ $task->status }}"
-                                                            data-start_time="{{ $task->start_time }}"
-                                                            data-end_time="{{ $task->end_time }}">
-                                                            {{ $task->title }}
-                                                        </button>
+                                                        <div class="d-flex justify-content-between align-items-center">
+                                                            <button
+                                                                class="btn btn-link text-white"
+                                                                data-toggle="modal"
+                                                                data-target="#taskModal"
+                                                                data-id="{{ $task->id }}"
+                                                                data-title="{{ $task->title }}"
+                                                                data-status="{{ $task->status }}"
+                                                                data-start_time="{{ $task->start_time }}"
+                                                                data-end_time="{{ $task->end_time }}">
+                                                                {{ $task->title }}
+                                                            </button>
+                                                            <button
+                                                                class="btn btn-danger btn-sm"
+                                                                onclick="confirmDeletion({{ $task->id }})">
+                                                                Delete
+                                                            </button>
+                                                            <form id="delete-task-{{ $task->id }}" action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: none;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                            </form>
+                                                        </div>
                                                     @endforeach
                                                 </div>
                                             </div>
@@ -148,7 +156,6 @@
         </article>
     </section>
 
-
     <div class="modal fade" id="taskModal" tabindex="-1" role="dialog" aria-labelledby="taskModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -159,37 +166,34 @@
                     </button>
                 </div>
                 <div class="modal-body">
-    <form id="taskForm" action="{{ route('tasks.update') }}" method="POST">
-        @csrf
-        @method('PUT')
-        <input type="hidden" id="task_id" name="task_id">
-
-        <div class="form-group">
-            <label for="task_title">Title</label>
-            <input type="text" class="form-control" id="task_title" name="title" required>
-        </div>
-        <div class="form-group">
-            <label for="task_status">Status</label>
-            <select class="form-control" id="task_status" name="status" required>
-                <option value="Not started">Not started</option>
-                <option value="Started">Started</option>
-                <option value="Finished">Finished</option>
-                <option value="Checked">Checked</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="task_start_time">Start Time</label>
-            <input type="datetime-local" class="form-control" id="task_start_time" name="start_time" required>
-        </div>
-        <div class="form-group">
-            <label for="task_end_time">End Time</label>
-            <input type="datetime-local" class="form-control" id="task_end_time" name="end_time" required>
-        </div>
-
-        <button type="submit" class="btn btn-success">Save Changes</button>
-    </form>
-</div>
-
+                    <form id="taskForm" action="{{ route('tasks.update') }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" id="task_id" name="task_id">
+                        <div class="form-group">
+                            <label for="task_title">Title</label>
+                            <input type="text" class="form-control" id="task_title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="task_status">Status</label>
+                            <select class="form-control" id="task_status" name="status" required>
+                                <option value="Not started">Not started</option>
+                                <option value="Started">Started</option>
+                                <option value="Finished">Finished</option>
+                                <option value="Checked">Checked</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="task_start_time">Start Time</label>
+                            <input type="datetime-local" class="form-control" id="task_start_time" name="start_time" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="task_end_time">End Time</label>
+                            <input type="datetime-local" class="form-control" id="task_end_time" name="end_time" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Save Changes</button>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
@@ -200,7 +204,6 @@
             const form = document.getElementById("add-task-form");
             form.style.display = form.style.display === "none" || form.style.display === "" ? "block" : "none";
         });
-
 
         $('#taskModal').on('show.bs.modal', function (event) {
             var button = $(event.relatedTarget);
@@ -217,11 +220,15 @@
             modal.find('#task_start_time').val(taskStartTime);
             modal.find('#task_end_time').val(taskEndTime);
         });
-    </script>
 
+        function confirmDeletion(taskId) {
+            if (confirm('Are you sure you want to delete this task?')) {
+                document.getElementById('delete-task-' + taskId).submit();
+            }
+        }
+    </script>
     <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
 </body>
-
 </html>

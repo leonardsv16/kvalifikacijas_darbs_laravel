@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Auth;
 
+Route::get('/register', action: [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
 
 Route::get('/login', function () {
     return view(view: 'index');
@@ -25,6 +28,7 @@ Route::get('/home', function () {
 Route::get('/tasks', [TasksController::class, 'index'])->name('tasks.index');
 Route::post('/tasks', [TasksController::class, 'store'])->name('tasks.store');
 Route::put('/tasks/update', [TasksController::class, 'update'])->name('tasks.update');
+Route::delete('/tasks/{id}', [TasksController::class, 'destroy'])->name('tasks.destroy');
 
 
 Route::get('/projects', function () {
