@@ -1,202 +1,59 @@
 <!DOCTYPE html>
-<html class="no-js" lang="">
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>Page 3</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
-    <link rel="stylesheet" href="css/templatemo-style.css" />
-
-    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 </head>
+<!-- <style>
+        body {
+                    background-image: url(/img/first-bg.png);
+                    height: 100vh;
+                    margin: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+ </style> -->
 
 <body>
-    <nav class="nav">
-        <div class="burger">
-            <div class="burger__patty"></div>
-        </div>
+    <div class="container mt-5">
+        <h1>Manage Users</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <td>
 
-        <ul class="nav__list">
-            <li class="nav__item">
-                <a href="/home" class="nav__link c-blue"><img src="img/home-icon.png" alt="" /></a>
-            </li>
-
-            @auth
-                <li class="nav__item">
-                    <a href="/tasks" class="nav__link c-yellow scrolly"><img src="img/about-icon.png" alt="" /></a>
-                </li>
-                <li class="nav__item">
-                    <a href="/projects" class="nav__link c-red"><img src="img/projects-icon.png" alt="" /></a>
-                </li>
-            @endauth
-
-            <li class="nav__item">
-                <a href="/contacts" class="nav__link c-green"><img src="img/contact-icon.png" alt="" /></a>
-            </li>
-        </ul>
-    </nav>
-
-
-    <section class="panel b-red" id="3">
-        <article class="panel__wrapper">
-            <div class="panel__content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <div class="projects-content">
-                                <div class="heading">
-                                    <h4>Recent Projects</h4>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="owl-carousel owl-theme projects-container">
-                                            <div>
-                                                <div class="project-item">
-                                                    <a href="img/project-item-01.jpg" data-lightbox="image-1"><img
-                                                            src="img/project-item-01.jpg" alt="" /></a>
-                                                    <div class="text-content">
-                                                        <h4>Work Smart</h4>
-                                                        <p>
-                                                            Lorem ipsum dolor, adipis scing elit etiam ante
-                                                            vehicula, aliquam mauris in, luctus neque.
-                                                        </p>
-                                                        <div class="primary-button">
-                                                            <a href="#">Discover More</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="project-item">
-                                                    <a href="img/project-item-02.jpg" data-lightbox="image-1"><img
-                                                            src="img/project-item-02.jpg" alt="" /></a>
-                                                    <div class="text-content">
-                                                        <h4>Creative Idea</h4>
-                                                        <p>
-                                                            Lorem ipsum dolor, adipis scing elit etiam ante
-                                                            vehicula, aliquam mauris in, luctus neque.
-                                                        </p>
-                                                        <div class="primary-button">
-                                                            <a href="#">Discover More</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="project-item">
-                                                    <a href="img/project-item-03.jpg" data-lightbox="image-1"><img
-                                                            src="img/project-item-03.jpg" alt="" /></a>
-                                                    <div class="text-content">
-                                                        <h4>New Thought</h4>
-                                                        <p>
-                                                            Lorem ipsum dolor, adipis scing elit etiam ante
-                                                            vehicula, aliquam mauris in, luctus neque.
-                                                        </p>
-                                                        <div class="primary-button">
-                                                            <a href="#">Discover More</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="project-item">
-                                                    <a href="img/project-item-04.jpg" data-lightbox="image-1"><img
-                                                            src="img/project-item-04.jpg" alt="" /></a>
-                                                    <div class="text-content">
-                                                        <h4>Next Moment</h4>
-                                                        <p>
-                                                            Lorem ipsum dolor sit amet, adipis scing elit
-                                                            etiam sit amet ante vehicula, aliquam mauris in,
-                                                            luctus neque.
-                                                        </p>
-                                                        <div class="primary-button">
-                                                            <a href="#">Discover More</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="project-item">
-                                                    <a href="img/project-item-05.jpg" data-lightbox="image-1"><img
-                                                            src="img/project-item-05.jpg" alt="" /></a>
-                                                    <div class="text-content">
-                                                        <h4>Artwork</h4>
-                                                        <p>
-                                                            Lorem ipsum dolor, adipis scing elit etiam ante
-                                                            vehicula, aliquam mauris in, luctus neque.
-                                                        </p>
-                                                        <div class="primary-button">
-                                                            <a href="#">Discover More</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="project-item">
-                                                    <a href="img/project-item-06.jpg" data-lightbox="image-1"><img
-                                                            src="img/project-item-06.jpg" alt="" /></a>
-                                                    <div class="text-content">
-                                                        <h4>Sixth Box</h4>
-                                                        <p>
-                                                            Lorem ipsum dolor, adipis scing elit etiam ante
-                                                            vehicula, aliquam mauris in, luctus neque.
-                                                        </p>
-                                                        <div class="primary-button">
-                                                            <a href="#">Discover More</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div>
-                                                <div class="project-item">
-                                                    <a href="img/project-item-07.jpg" data-lightbox="image-1"><img
-                                                            src="img/project-item-07.jpg" alt="" /></a>
-                                                    <div class="text-content">
-                                                        <h4>Item #7</h4>
-                                                        <p>
-                                                            Lorem ipsum dolor, adipis scing elit etiam ante
-                                                            vehicula, aliquam mauris in, luctus neque.
-                                                        </p>
-                                                        <div class="primary-button">
-                                                            <a href="#">Discover More</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </section>
-
-
-    <div class="footer">
-        <p>Copyright &copy; 2020 Your Company | Design: TemplateMo</p>
+                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Are you sure you want to delete this user?');">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>
-        window.jQuery ||
-            document.write(
-                '<script src="js/vendor/jquery-1.11.2.min.js"><\/script>'
-            );
-    </script>
-
-    <script src="js/vendor/bootstrap.min.js"></script>
-
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{{ asset('js/vendor/jquery-1.11.2.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
 </body>
 
 </html>
