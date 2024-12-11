@@ -8,62 +8,8 @@
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/templatemo-style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
-    <style>
-        body {
-            background-color: #f4f7fc;
-            background-image: url(/img/first-bg.png);
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .edit-container {
-            margin: auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-        }
-
-        h1 {
-            margin-bottom: 20px;
-            text-align: center;
-            color: #333;
-        }
-
-        .form-control {
-            height: 50px;
-            border-radius: 5px;
-        }
-
-        .btn-success {
-            width: 100%;
-            padding: 12px;
-            background-color: #0056b3;
-            color: white;
-            border: none;
-            border-radius: 5px;
-        }
-
-        .btn-secondary {
-            color: white;
-            width: 100%;
-            padding: 12px;
-            background-color: gray;
-            border: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-        .btn:hover {
-            opacity: 0.9;
-        }
-    </style>
 </head>
 
 <body>

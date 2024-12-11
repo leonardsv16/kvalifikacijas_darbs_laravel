@@ -1,5 +1,263 @@
 
+/* tasks styli */
+.task-container h5 {
+    color: white;
+}
 
+#add-task-form {
+    display: none;
+    margin-top: 20px;
+}
+
+.task-box button {
+    width: 100%;
+    margin: 5px 0;
+}
+.btn-delete {
+    color: white;
+    background-color: gray;
+}
+.task-box .task-preview {
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.task-box small {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+/* page3 */
+body {
+    background-color: #f4f7fc;
+    background-image: url(/img/first-bg.png);
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    margin-top: 80px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.table {
+    background: white;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+}
+
+.btn-danger:hover {
+    background-color: #b02a37;
+}
+
+/* edit */
+
+body {
+    background-color: #f4f7fc;
+    background-image: url(/img/first-bg.png);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-container {
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.form-control {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.btn-success {
+    width: 100%;
+    padding: 12px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-secondary {
+    color: white;
+    width: 100%;
+    padding: 12px;
+    background-color: gray;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* index/login/home */
+body {
+    background-color: #f4f7fc;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.text-center {
+    margin-top: 20px;
+}
+
+.nav__link {
+    color: white;
+}
+
+.nav__link:hover {
+    color: #f4f7fc;
+}
+
+.text-center a {
+    font-weight: bold;
+    color: black;
+}
+
+.text-center a:hover {
+    color: #007bff;
+}
+
+/* register page */
+body {
+    background-image: url('{{ asset('img/fourth-bg.png') }}');
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-container {
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+.register-container h3 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    height: 50px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+.text-center {
+    margin-top: 20px;
+}
+
+.text-center a {
+    font-weight: bold;
+    color: black;
+}
+
+.text-center a:hover {
+    color: #007bff;
+}
+
+
+/* ----------------------------------------------------------------------- */
 body {
 	font-family: 'Roboto', sans-serif;
 }
@@ -714,7 +972,7 @@ ul {
 
 /* Preload images */
 body:after {
-  content: url(../img/close.png) url(../img/loading.gif) url(../img/prev.png) url(../img/next.png);
+  content: url(../img/close.png) url(../img/prev.png) url(../img/next.png);
   display: none;
 }
 
@@ -791,7 +1049,6 @@ body.lb-disable-scrolling {
   width: 32px;
   height: 32px;
   margin: 0 auto;
-  background: url(../img/loading.gif) no-repeat;
 }
 
 .lb-nav {

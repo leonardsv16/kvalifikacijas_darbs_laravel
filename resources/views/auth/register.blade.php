@@ -9,66 +9,6 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="css/templatemo-style.css" />
 
-    <style>
-        body {
-            background-image: url('{{ asset('img/fourth-bg.png') }}');
-            height: 100vh;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .register-container {
-            margin: auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 500px;
-        }
-
-        .register-container h3 {
-            margin-bottom: 20px;
-            text-align: center;
-            color: #333;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-control {
-            height: 50px;
-            border-radius: 5px;
-        }
-
-        .btn-primary {
-            width: 100%;
-            padding: 12px;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-        }
-
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
-
-        .text-center {
-            margin-top: 20px;
-        }
-
-        .text-center a {
-            font-weight: bold;
-            color: black;
-        }
-
-        .text-center a:hover {
-            color: #007bff;
-        }
-    </style>
 </head>
 <body>
     <div class="register-container">

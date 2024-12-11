@@ -10,28 +10,8 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/templatemo-style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
-
-    <style>
-        .task-container h5 {
-            color: white;
-        }
-
-        #add-task-form {
-            display: none;
-            margin-top: 20px;
-        }
-
-        .task-box button {
-            width: 100%;
-            margin: 5px 0;
-        }
-        .btn-delete {
-            color: white;
-            background-color: gray;
-        }
-    </style>
 </head>
 
 <body>
@@ -124,7 +104,12 @@
                                                 <h5>{{ ucfirst(str_replace('_', ' ', $status)) }}</h5>
                                                 <div class="task-box">
                                                     @foreach ($tasks[$status] as $task)
-                                                        <div class="d-flex justify-content-between align-items-center">
+                                                    <div class="task-preview">
+                                                        <div class="d-flex justify-content-between align-items-center mt-2"></div>
+                                                        <small>Assigned to: {{ $task->user->name ?? 'Unassigned' }}</small>
+                                                            <small>Start: {{ \Carbon\Carbon::parse($task->start_time)->format('d M Y, H:i') }}</small>
+                                                            <small>End: {{ \Carbon\Carbon::parse($task->end_time)->format('d M Y, H:i') }}</small>
+
                                                             <button
                                                                 class="btn btn-link text-white"
                                                                 data-toggle="modal"
