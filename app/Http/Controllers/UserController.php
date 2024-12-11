@@ -48,6 +48,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|confirmed|min:8',
         ]);
 
         $user = User::findOrFail($id);
@@ -56,10 +57,13 @@ class UserController extends Controller
             abort(403, 'Unauthorized action.');
         }
 
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->input('password'));
+        }
+        $user->save();
 
         return redirect()->route('users.manage')->with('success', 'User updated successfully!');
     }
