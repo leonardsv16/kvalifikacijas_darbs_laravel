@@ -27,6 +27,10 @@
             width: 100%;
             margin: 5px 0;
         }
+        .btn-delete {
+            color: white;
+            background-color: gray;
+        }
     </style>
 </head>
 
@@ -133,7 +137,7 @@
                                                                 {{ $task->title }}
                                                             </button>
                                                             <button
-                                                                class="btn btn-danger btn-sm"
+                                                                class="btn btn-delete btn-sm"
                                                                 onclick="confirmDeletion({{ $task->id }})">
                                                                 Delete
                                                             </button>
