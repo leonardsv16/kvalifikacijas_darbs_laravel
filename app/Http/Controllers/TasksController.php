@@ -33,6 +33,7 @@ class TasksController extends Controller
 {
     $validated = $request->validate([
         'title' => 'required|string|max:255',
+        'description' => 'required|string|max:255',
         'status' => 'required|string|in:Not started,Started,Finished,Checked',
         'start_time' => 'required|date',
         'end_time' => 'required|date|after_or_equal:start_time',
@@ -59,6 +60,7 @@ class TasksController extends Controller
     {
         $task = Task::findOrFail($request->task_id);
         $task->title = $request->title;
+        $task->description = $request->description;
         $task->status = $request->status;
         $task->start_time = $request->start_time;
         $task->end_time = $request->end_time;

@@ -11,6 +11,7 @@ class Task extends Model
 
     protected $fillable = [
         'title',
+        'description',
         'status',
         'start_time',
         'end_time',

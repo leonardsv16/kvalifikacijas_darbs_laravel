@@ -69,10 +69,10 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="datetime-local" name="start_time" class="form-control"  />
+                                                <input type="datetime-local" name="start_time" class="form-control" required />
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="datetime-local" name="end_time" class="form-control"  />
+                                                <input type="datetime-local" name="end_time" class="form-control" required />
                                             </div>
                                             <div class="col-md-2">
                                                 <select name="user_id" class="form-control" required>
@@ -90,6 +90,11 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            <div class="row mt-2">
+                                            <div class="col-md-12">
+                                                <textarea name="description" class="form-control" rows="3" placeholder="Task Description" required></textarea>
+                                            </div>
+                                        </div>
                                             <div class="col-md-1">
                                                 <button type="submit" class="btn btn-success">Save</button>
                                             </div>
@@ -106,6 +111,10 @@
                                                     @foreach ($tasks[$status] as $task)
                                                     <div class="task-preview">
                                                         <div class="d-flex justify-content-between align-items-center mt-2"></div>
+                                                        <h5 class="mb-2">{{ $task->title }}</h5>
+                                                        <p class="mb-2 text-muted">
+                                                            {{ \Illuminate\Support\Str::limit($task->description, 100, '...') }}
+                                                        </p>
                                                         <small>Assigned to: {{ $task->user->name ?? 'Unassigned' }}</small>
                                                             <small>Start: {{ \Carbon\Carbon::parse($task->start_time)->format('d M Y, H:i') }}</small>
                                                             <small>End: {{ \Carbon\Carbon::parse($task->end_time)->format('d M Y, H:i') }}</small>
@@ -116,6 +125,7 @@
                                                                 data-target="#taskModal"
                                                                 data-id="{{ $task->id }}"
                                                                 data-title="{{ $task->title }}"
+                                                                data-description="{{ $task->description }}"
                                                                 data-status="{{ $task->status }}"
                                                                 data-start_time="{{ $task->start_time }}"
                                                                 data-end_time="{{ $task->end_time }}">
@@ -159,10 +169,17 @@
                         @csrf
                         @method('PUT')
                         <input type="hidden" id="task_id" name="task_id">
+
                         <div class="form-group">
                             <label for="task_title">Title</label>
                             <input type="text" class="form-control" id="task_title" name="title" required>
                         </div>
+
+                        <div class="form-group">
+                        <label for="task_description">Description</label>
+                        <textarea class="form-control" id="task_description" name="description" rows="3" required></textarea>
+                        </div>
+
                         <div class="form-group">
                             <label for="task_status">Status</label>
                             <select class="form-control" id="task_status" name="status" required>
@@ -172,14 +189,17 @@
                                 <option value="Checked">Checked</option>
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="task_start_time">Start Time</label>
-                            <input type="datetime-local" class="form-control" id="task_start_time" name="start_time" required>
+                            <input type="datetime-local" class="form-control" id="task_start_time" name="start_time">
                         </div>
+
                         <div class="form-group">
                             <label for="task_end_time">End Time</label>
-                            <input type="datetime-local" class="form-control" id="task_end_time" name="end_time" required>
+                            <input type="datetime-local" class="form-control" id="task_end_time" name="end_time"    >
                         </div>
+
                         <button type="submit" class="btn btn-success">Save Changes</button>
                     </form>
                 </div>
@@ -198,6 +218,7 @@
             var button = $(event.relatedTarget);
             var taskId = button.data('id');
             var taskTitle = button.data('title');
+            var taskDescription = button.data('description');
             var taskStatus = button.data('status');
             var taskStartTime = button.data('start_time');
             var taskEndTime = button.data('end_time');
@@ -205,6 +226,7 @@
             var modal = $(this);
             modal.find('#task_id').val(taskId);
             modal.find('#task_title').val(taskTitle);
+            modal.find('#task_description').val(taskDescription);
             modal.find('#task_status').val(taskStatus);
             modal.find('#task_start_time').val(taskStartTime);
             modal.find('#task_end_time').val(taskEndTime);

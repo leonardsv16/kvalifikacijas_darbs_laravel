@@ -1,3 +1,6 @@
+composer install
+php artisan migrate:fresh --seed
+
 http://127.0.0.1:8000/home - sakumlapa
 Seeder izveidota parole prieks user - 'password'
 Velams izveleties useri ar role - admin, jo vinam bus viss pieejams. Parole tadi pati - "password"
