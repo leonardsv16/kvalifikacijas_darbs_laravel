@@ -69,10 +69,10 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="datetime-local" name="start_time" class="form-control" required />
+                                                <input type="datetime-local" name="start_time" class="form-control"  />
                                             </div>
                                             <div class="col-md-2">
-                                                <input type="datetime-local" name="end_time" class="form-control" required />
+                                                <input type="datetime-local" name="end_time" class="form-control"  />
                                             </div>
                                             <div class="col-md-2">
                                                 <select name="user_id" class="form-control" required>
