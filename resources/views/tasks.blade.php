@@ -19,12 +19,10 @@
         <div class="burger">
             <div class="burger__patty"></div>
         </div>
-
         <ul class="nav__list">
             <li class="nav__item">
                 <a href="/home" class="nav__link c-blue"><img src="img/home-icon.png" alt="" /></a>
             </li>
-
             @auth
                 <li class="nav__item">
                     <a href="/tasks" class="nav__link c-yellow scrolly"><img src="img/about-icon.png" alt="" /></a>
@@ -33,7 +31,6 @@
                     <a href="/projects" class="nav__link c-red"><img src="img/projects-icon.png" alt="" /></a>
                 </li>
             @endauth
-
             <li class="nav__item">
                 <a href="/contacts" class="nav__link c-green"><img src="img/contact-icon.png" alt="" /></a>
             </li>
@@ -47,60 +44,74 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="about-content">
+
                                 <div class="heading d-flex justify-content-between align-items-center">
                                     <h4>Tasks</h4>
-                                    <button id="show-task-form" class="btn btn-primary">Add Task</button>
+                                    <button id="show-task-form" class="btn btn-primary" data-toggle="modal" data-target="#taskAddModal">Add Task</button>
                                 </div>
 
-                                <div id="add-task-form">
-                                    <form action="{{ route('tasks.store') }}" method="POST">
-                                        @csrf
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                <input type="text" name="title" class="form-control" placeholder="Task Title" required />
-                                            </div>
-                                            <div class="col-md-2">
-                                                <select name="status" class="form-control" required>
-                                                    <option value="" disabled selected>Select Status</option>
-                                                    <option value="Not started">Not started</option>
-                                                    <option value="Started">Started</option>
-                                                    <option value="Finished">Finished</option>
-                                                    <option value="Checked">Checked</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input type="datetime-local" name="start_time" class="form-control" required />
-                                            </div>
-                                            <div class="col-md-2">
-                                                <input type="datetime-local" name="end_time" class="form-control" required />
-                                            </div>
-                                            <div class="col-md-2">
-                                                <select name="user_id" class="form-control" required>
-                                                    <option value="" disabled selected>Select User</option>
-                                                    @foreach ($users as $user)
-                                                        <option value="{{ $user->id }}">{{ $user->name }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="col-md-1">
-                                                <select name="project_id" class="form-control" required>
-                                                    <option value="" disabled selected>Select Project</option>
-                                                    @foreach ($projects as $project)
-                                                        <option value="{{ $project->id }}">{{ $project->title }}</option>
-                                                    @endforeach
-                                                </select>
-                                            </div>
-                                            <div class="row mt-2">
-                                            <div class="col-md-12">
-                                                <textarea name="description" class="form-control" rows="3" placeholder="Task Description" required></textarea>
-                                            </div>
-                                        </div>
-                                            <div class="col-md-1">
-                                                <button type="submit" class="btn btn-success">Save</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                <div class="modal fade" id="taskAddModal" tabindex="-1" role="dialog" aria-labelledby="taskAddModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="taskAddModalLabel">Add Task</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                             </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="add-task-form" action="{{ route('tasks.store') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="task-title">Title</label>
+                                    <input type="text" id="task-title" name="title" class="form-control" placeholder="Task Title" required>
                                 </div>
+                                <div class="form-group">
+                                    <label for="task-status">Status</label>
+                                    <select id="task-status" name="status" class="form-control" required>
+                                        <option value="" disabled selected>Select Status</option>
+                                        <option value="Not started">Not started</option>
+                                        <option value="Started">Started</option>
+                                        <option value="Finished">Finished</option>
+                                        <option value="Checked">Checked</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-start-time">Start Time</label>
+                                    <input type="datetime-local" id="task-start-time" name="start_time" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-end-time">End Time</label>
+                                    <input type="datetime-local" id="task-end-time" name="end_time" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-user">Assigned User</label>
+                                    <select id="task-user" name="user_id" class="form-control" required>
+                                        <option value="" disabled selected>Select User</option>
+                                        @foreach ($users as $user)
+                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-project">Project</label>
+                                    <select id="task-project" name="project_id" class="form-control" required>
+                                        <option value="" disabled selected>Select Project</option>
+                                        @foreach ($projects as $project)
+                                            <option value="{{ $project->id }}">{{ $project->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="task-description">Description</label>
+                                    <textarea id="task-description" name="description" class="form-control" rows="3" placeholder="Task Description" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-success">Save</button>
+                            </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                                 <div class="row mt-4">
                                     @foreach (['not_started', 'started', 'finished', 'checked'] as $status)
