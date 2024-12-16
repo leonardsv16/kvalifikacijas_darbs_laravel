@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TasksController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('/register', action: [AuthController::class, 'showRegistrationForm'])->name('register');
@@ -45,6 +46,7 @@ Route::get('/contacts', function () {
 // });
 
 
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
 Route::get('/projects', [UserController::class, 'manageUsers'])->name('users.manage');
 

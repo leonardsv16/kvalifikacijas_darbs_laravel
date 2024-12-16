@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap-theme.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 
 <body>
@@ -28,7 +30,7 @@
                     <a href="/tasks" class="nav__link c-yellow scrolly"><img src="img/about-icon.png" alt="" /></a>
                 </li>
                 <li class="nav__item">
-                    <a href="/projects" class="nav__link c-red"><img src="img/projects-icon.png" alt="" /></a>
+                    <a href="/projects" class="nav__link c-red"><img src="img/projects-icon.jpg" alt="" /></a>
                 </li>
             @endauth
             <li class="nav__item">
@@ -151,6 +153,27 @@
                                                                 @csrf
                                                                 @method('DELETE')
                                                             </form>
+                                                            <div class="task-comments">
+                                            <h6>Comments</h6>
+                                            <ul class="list-group">
+                                                @foreach ($task->comments as $comment)
+                                                    <li class="list-group-item">
+                                                        <strong>{{ $comment->user->name }}</strong> ({{ $comment->created_at->format('d M Y, H:i') }}):
+                                                        <p>{{ $comment->content }}</p>
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+
+                                            @auth
+                                            <form action="{{ route('comments.store') }}" method="POST" class="mt-3">
+                                                @csrf
+                                                <input type="hidden" name="task_id" value="{{ $task->id }}">
+                                                <textarea name="content" class="form-control" rows="2" placeholder="Add a comment..." required></textarea>
+                                                <button type="submit" class="btn btn-primary btn-sm mt-2">Post Comment</button>
+                                            </form>
+                                            @endauth
+                                        </div>
+
                                                         </div>
                                                     @endforeach
                                                 </div>

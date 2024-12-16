@@ -31,7 +31,7 @@
                     <a href="/tasks" class="nav__link c-yellow scrolly"><img src="img/about-icon.png" alt="" /></a>
                 </li>
                 <li class="nav__item">
-                    <a href="/projects" class="nav__link c-red"><img src="img/projects-icon.png" alt="" /></a>
+                    <a href="/projects" class="nav__link c-red"><img src="img/projects-icon.jpg" alt="" /></a>
                 </li>
             @endauth
 

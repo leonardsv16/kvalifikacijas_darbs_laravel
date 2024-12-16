@@ -24,7 +24,7 @@
                 <a href="{{ route('tasks.index') }}" class="nav__link c-yellow scrolly"><img src="{{ asset('img/about-icon.png') }}" alt="Tasks" /></a>
             </li>
             <li class="nav__item">
-                <a href="{{ route('projects.index') }}" class="nav__link c-red"><img src="{{ asset('img/projects-icon.png') }}" alt="Projects" /></a>
+                <a href="{{ route('projects.index') }}" class="nav__link c-red"><img src="{{ asset('img/projects-icon.jpg') }}" alt="Projects" /></a>
             </li>
             <li class="nav__item">
                 <a href="{{ route('contacts.index') }}" class="nav__link c-green"><img src="{{ asset('img/contact-icon.png') }}" alt="Contacts" /></a>

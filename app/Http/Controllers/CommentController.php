@@ -3,23 +3,27 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-use App\Models\Task;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
 
-    public function store(Request $request, $taskId)
+    public function store(Request $request)
     {
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+
         $validated = $request->validate([
             'content' => 'required|string',
-            'user_id' => 'required|exists:users,id',
+            'task_id' => 'required|exists:tasks,id',
         ]);
 
-        $task = Task::findOrFail($taskId);
-        $task->comments()->create($validated);
-
-        return redirect()->route('tasks.show', $taskId)->with('success', 'Komentārs pievienots!');
+        Comment::create([
+            'content' => $validated['content'],
+            'task_id' => $validated['task_id'],
+            'user_id' => $user->id,
+        ]);
+        return back()->with('success', 'Comment added successfully!');
     }
 
 
