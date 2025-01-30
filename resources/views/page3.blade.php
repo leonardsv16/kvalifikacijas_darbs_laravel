@@ -13,6 +13,7 @@
 </head>
 
 <body>
+<div class="about-content">
 <nav class="nav">
         <div class="burger">
             <div class="burger__patty"></div>
@@ -70,7 +71,7 @@
             </tbody>
         </table>
     </div>
-
+</div>
     <script src="{{ asset('js/vendor/jquery-1.11.2.min.js') }}"></script>
     <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>

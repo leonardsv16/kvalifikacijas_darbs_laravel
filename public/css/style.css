@@ -39,7 +39,7 @@ body {
 }
 
 .container {
-    margin-top: 80px;
+    margin-top: 250px;
 }
 
 h1 {
@@ -618,7 +618,7 @@ ul {
 */
 
 .about-content {
-  height: 100vh;
+  height: auto;
   background-color: rgba(45, 58, 75, 0.5);
   padding: 0px 60px;
   position: relative;

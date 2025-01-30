@@ -11,7 +11,6 @@ use App\Models\Task;
 class TaskTest extends TestCase
 {
 
-    use RefreshDatabase;
     /**
      * A basic feature test example.
      */
