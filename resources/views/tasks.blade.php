@@ -115,9 +115,22 @@
                             </div>
                         </div>
 
+
+
                                 <div class="row mt-4">
+
+                                <div class="form-group mb-4">
+                                <label for="task-filter">Show Tasks by Status:</label>
+                                <select id="task-filter" class="form-control" onchange="filterTasks()">
+                                    <option value="all">All</option>
+                                    <option value="not_started">Not started</option>
+                                    <option value="started">Started</option>
+                                    <option value="finished">Finished</option>
+                                    <option value="checked">Checked</option>
+                                </select>
+                            </div>
                                     @foreach (['not_started', 'started', 'finished', 'checked'] as $status)
-                                        <div class="col-md-3">
+                                        <div class="col-md-3 task-column" data-status="{{ $status }}">
                                             <div class="task-container">
                                                 <h5>{{ ucfirst(str_replace('_', ' ', $status)) }}</h5>
                                                 <div class="task-box">
@@ -249,7 +262,9 @@
         });
 
         $('#taskModal').on('show.bs.modal', function (event) {
+
             var button = $(event.relatedTarget);
+
             var taskId = button.data('id');
             var taskTitle = button.data('title');
             var taskDescription = button.data('description');
@@ -271,6 +286,25 @@
                 document.getElementById('delete-task-' + taskId).submit();
             }
         }
+
+
+        function filterTasks() {
+        const selectedStatus = document.getElementById('task-filter').value;
+        const columns = document.querySelectorAll('.task-column');
+
+        columns.forEach(column => {
+            if (selectedStatus === 'all' || column.dataset.status === selectedStatus) {
+                column.style.display = 'block';
+            } else {
+                column.style.display = 'none';
+            }
+        });
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            filterTasks();
+        });
+
+
     </script>
     <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/plugins.js') }}"></script>

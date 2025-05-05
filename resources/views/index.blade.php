@@ -92,7 +92,7 @@
 
                                 <div class="text-center">
                                     <p>Don't have an account? <a href="/register">Register here</a></p>
-                                    <p><a href="/password/reset">Forgot your password?</a></p>
+
                                 </div>
                             @endauth
 
