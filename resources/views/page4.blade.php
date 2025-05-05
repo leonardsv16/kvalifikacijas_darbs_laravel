@@ -50,13 +50,17 @@
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="contact-content">
+                            @if(session('success'))
+                                <div class="alert alert-success">{{ session('success') }}</div>
+                            @endif
                                 <div class="heading">
                                     <h4>Contact us</h4>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="contat-form">
-                                            <form id="contact" action="" method="post">
+                                        <form id="contact" action="{{ route('contact.submit') }}" method="POST">
+                                                @csrf
                                                 <fieldset>
                                                     <input name="name" type="text" class="form-control" id="name"
                                                         placeholder="Your Name" required="" />

@@ -6,6 +6,10 @@ use App\Http\Controllers\TasksController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\ContactController;
+
+Route::get('/contacts', [ContactController::class, 'showForm'])->name('contact.form');
+Route::post('/contacts', [ContactController::class, 'submitForm'])->name('contact.submit');
 
 Route::get('/register', action: [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
