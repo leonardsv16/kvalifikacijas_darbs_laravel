@@ -59,7 +59,7 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="contat-form">
-                                        <form id="contact" action="{{ route('contact.submit') }}" method="POST">
+                                        <form id="contact" action="{{ route('contacts.submit') }}" method="POST">
                                                 @csrf
                                                 <fieldset>
                                                     <input name="name" type="text" class="form-control" id="name"
@@ -79,13 +79,6 @@
                                                     </button>
                                                 </fieldset>
                                             </form>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="more-info">
-                                            <p>
-                                                ..
-                                            </p>
                                         </div>
                                     </div>
                                 </div>

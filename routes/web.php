@@ -8,8 +8,8 @@ use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ContactController;
 
-Route::get('/contacts', [ContactController::class, 'showForm'])->name('contact.form');
-Route::post('/contacts', [ContactController::class, 'submitForm'])->name('contact.submit');
+Route::get('/contacts', [ContactController::class, 'showForm'])->name('contacts.form');
+Route::post('/contacts', [ContactController::class, 'submitForm'])->name('contacts.submit');
 
 Route::get('/register', action: [AuthController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
@@ -39,9 +39,6 @@ Route::get('/projects', function () {
     return view('page3');
 });
 
-Route::get('/contacts', function () {
-    return view('page4');
-});
 
 // Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
