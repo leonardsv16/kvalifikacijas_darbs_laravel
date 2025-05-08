@@ -1,4 +1,9 @@
+
+
+
+
 body {
+    font-family: 'Inter', sans-serif;
     background-color: #f4f7fc;
     display: flex;
     justify-content: center;
@@ -28,36 +33,32 @@ body {
 
 
 /* tasks styli */
-.task-container h5 {
-    color: white;
-}
-
-#add-task-form {
-    display: none;
-    margin-top: 20px;
-}
-
-.task-box button {
-    width: 100%;
-    margin: 5px 0;
-}
-.btn-delete {
-    color: white;
-    background-color: gray;
-}
 .task-box .task-preview {
-    padding: 15px;
-    background-color: #f8f9fa;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-bottom: 15px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out;
+}
+.task-box .task-preview:hover {
+    transform: translateY(-4px);
+}
+.task-box .task-preview h5 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #333;
+}
+.task-box .task-preview small {
+    color: #555;
+}
+#task-filter {
+    max-width: 200px;
+    margin-bottom: 20px;
+    border-radius: 20px;
+    padding: 6px 12px;
 }
 
-.task-box small {
-    display: block;
-    margin-bottom: 5px;
-    color: #666;
-}
 /* page3 */
 body {
     background-color: #f4f7fc;

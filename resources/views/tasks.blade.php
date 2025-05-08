@@ -14,6 +14,7 @@
     <script src="{{ asset('js/vendor/modernizr-2.8.3-respond-1.4.2.min.js') }}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
 </head>
 
 <body>
@@ -299,10 +300,10 @@
                 column.style.display = 'none';
             }
         });
-        }
-        document.addEventListener('DOMContentLoaded', function () {
-            filterTasks();
-        });
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        filterTasks();
+    });
 
 
     </script>
