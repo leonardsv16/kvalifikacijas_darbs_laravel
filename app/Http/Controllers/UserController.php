@@ -82,6 +82,6 @@ public function edit($id)
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+        return redirect()->route('users.manage')->with('success', 'User deleted successfully.');
     }
 }
